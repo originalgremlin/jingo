@@ -201,5 +201,5 @@ class Loader(BaseLoader):
         try:
             template = env.get_template(template_name)
             return template, template.filename
-        except jinja2.TemplateNotFound:
+        except (jinja2.TemplateNotFound, jinja2.TemplateSyntaxError):
             raise TemplateDoesNotExist(template_name)
